@@ -1,4 +1,5 @@
 var buttonGroupBinding = new Shiny.InputBinding();
+var buttonClicked = undefined;
 
 $.extend(buttonGroupBinding, {
   find: function(scope) {
@@ -8,12 +9,25 @@ $.extend(buttonGroupBinding, {
   getValue: function(el) {
 		// El manejador del evento
 		// Devuelve valor a R
-		return $('input:radio[name="' + (el.id) + '"]:checked').val();
+ //return
+  if (!buttonClicked) {
+    return null
+  }
+  var id = buttonClicked.getAttribute('id')
+  return id
+  },
+   setValue: function(el, value) {
+   //console.log(value)
   },
   subscribe: function(el, callback) {
 		// Enlaza eventos al elemento que se creo	
-		$(el).on('change.buttonGroupBinding', function (event) {
-			callback();
+		$(el).on('click.buttonGroupBinding', function (event) {
+		  var target = event.target
+		  if (!target.matches('button')) {
+		    return
+		  }
+		  buttonClicked = target
+		  callback();
 		})
   },
   unsubscribe: function(el) {

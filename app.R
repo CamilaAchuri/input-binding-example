@@ -17,9 +17,9 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   output$options <- renderUI(buttonGroup(
-		'radios',
-		c('Uno', 'Dos', 'Tres'),
-		c('one', 'two', 'three')
+		id = 'radios',
+		labels = c('area', 'bar', 'donut'),
+		value = c('one', 'two', 'three')
 	))
 	output$result <- renderPrint(input$radios)
 }
