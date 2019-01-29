@@ -23,10 +23,16 @@ $.extend(buttonGroupBinding, {
 		// Enlaza eventos al elemento que se creo	
 		$(el).on('click.buttonGroupBinding', function (event) {
 		  var target = event.target
-		  if (!target.matches('button')) {
+		  if (target.matches('button')) {
+		    // Si es boton
+		    buttonClicked = target
+		  } else if (target.matches('button img')) {
+		    // Si es imagen
+		    buttonClicked = target.parentNode
+		  } else if (!target.matches('button') && !target.matches('button img')) {
+		    // Ni boton, ni imagen
 		    return
 		  }
-		  buttonClicked = target
 		  callback();
 		})
   },

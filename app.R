@@ -19,7 +19,7 @@ server <- function(input, output) {
   output$options <- renderUI(buttonGroup(
 		id = 'radios',
 		labels = c('area', 'bar', 'donut'),
-		value = c('one', 'two', 'three')
+		values = c('one', 'two', 'three')
 	))
 	output$result <- renderPrint(input$radios)
 }

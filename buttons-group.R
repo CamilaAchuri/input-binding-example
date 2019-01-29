@@ -11,7 +11,6 @@ buttonGroup <- function (id, labels, values = NULL, file = NULL, format = NULL ,
 			class = 'buttons-group',
 			id = id,
 			map(seq_along(labels), function (index) {
-			  print(imgFile)
 				tags$button(
 					#type = 'button',
 					id = values[index],
